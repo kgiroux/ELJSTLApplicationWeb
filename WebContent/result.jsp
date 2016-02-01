@@ -11,9 +11,9 @@
 <body>
 	<legend>Bonus calculation</legend>
 	<div>
-		<p>${data.ssn}</p>
-		<p>${data.multiplier}</p>
-		<p><c:out value="${data.bonus}" default="Le multiplier n'est pas renseigné !" /></p>
+		<p>SSN : ${data.ssn}</p>
+		<p>Multiplier : ${data.multiplier}</p>
+		<p>Bonus : ${!empty data.bonus ? data.bonus : "Veuillez préciser un multiplier" }</p>
 	</div>
 </body>
 </html>
