@@ -24,6 +24,10 @@ public class test_servlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public int calculateBonus(int multiplier){
+		return multiplier*10;
+	}
 
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -34,11 +38,11 @@ public class test_servlet extends HttpServlet {
 
 		data.setBonus(Integer.parseInt(request.getParameter("SSN")));
 		data.setBonus(Integer.parseInt(request.getParameter("multiplier")));
-		data.setBonus(data.getMultiplier()*10);
+		data.setBonus(calculateBonus(Integer.parseInt(request.getParameter("multiplier"))));
 
 		request.setAttribute("data", data);
 
-		request.getRequestDispatcher("index.jsp")
+		request.getRequestDispatcher("result.jsp")
 				.forward(request, response);
 	}
 
