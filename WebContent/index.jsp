@@ -9,7 +9,7 @@
 </head>
 <body>
 	<legend>Bonus calculation</legend>
-	<form method="POST" action="<%=request.getContextPath()%>/HelloServer">
+	<form method="POST" action="<%=request.getContextPath()%>/test_servlet">
 		<label for="SSN">Security Social Number : </label>
 		<input type="text" name="SSN" id="SSN">
 		</br>
