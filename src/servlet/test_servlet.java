@@ -30,8 +30,11 @@ public class test_servlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int calculateBonus(int multiplier){
-		return multiplier*10;
+	public String calculateBonus(String multiplier){
+		if(!multiplier.equals(""))
+			return String.valueOf(Integer.parseInt(multiplier)*10);
+		else
+			return "";
 	}
 
 	protected void processRequest(HttpServletRequest request,
@@ -67,9 +70,9 @@ public class test_servlet extends HttpServlet {
 		
 		/*Data data = new Data();
 
-		data.setBonus(Integer.parseInt(request.getParameter("SSN")));
-		data.setBonus(Integer.parseInt(request.getParameter("multiplier")));
-		data.setBonus(calculateBonus(Integer.parseInt(request.getParameter("multiplier"))));
+		data.setSsn(request.getParameter("SSN"));
+		data.setMultiplier(request.getParameter("multiplier"));
+		data.setBonus(calculateBonus(data.getMultiplier()));
 
 		listResult.add(data);
 		

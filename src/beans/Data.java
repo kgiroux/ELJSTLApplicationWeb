@@ -1,31 +1,31 @@
 package beans;
 
 public class Data {
-	private int ssn;
-	private int multiplier;
-	private int bonus;
+	private String ssn;
+	private String multiplier;
+	private String bonus;
 	
-	public int getSsn() {
+	public String getSsn() {
 		return ssn;
 	}
 
-	public void setSsn(int ssn) {
+	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
 
-	public int getMultiplier() {
+	public String getMultiplier() {
 		return multiplier;
 	}
 
-	public void setMultiplier(int multiplier) {
+	public void setMultiplier(String multiplier) {
 		this.multiplier = multiplier;
 	}
 
-	public int getBonus() {
+	public String getBonus() {
 		return bonus;
 	}
 
-	public void setBonus(int bonus) {
+	public void setBonus(String bonus) {
 		this.bonus = bonus;
 	}
 }
