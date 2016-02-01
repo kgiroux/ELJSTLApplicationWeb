@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +11,17 @@
 <body>
 	<legend>Bonus calculation</legend>
 	<form method="POST" action="<%=request.getContextPath()%>/test_servlet">
-		<label for="SSN">Security Social Number : </label>
-		<input type="text" name="SSN" id="SSN" required>
-		</br>
-		<label for="multiplier">Multiplier bonus :  </label>
-		<input type="text" name="multiplier" id="multiplier" required>
-		</br>
-		<input type="submit" class="btn btn-lg-6 btn-primary"/>
-		<input type="reset" class="btn btn-lg-6 btn-danger"/>
+		<c:forEach var="i" begin="1" end="5">
+			<label for="SSN">Security Social Number : </label>
+			<input type="text" name="SSN" required>
+			</br>
+			<label for="multiplier">Multiplier bonus :  </label>
+			<input type="text" name="multiplier" required>
+			</br>
+			<input type="submit" class="btn btn-lg-6 btn-primary"/>
+			<input type="reset" class="btn btn-lg-6 btn-danger"/>
+		</c:forEach>
+		
 	</form>
 </body>
 </html>

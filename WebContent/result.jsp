@@ -11,15 +11,20 @@
 <body>
 	<legend>Bonus calculation</legend>
 	<div>
-		<table>
+		<table class="table table-striped">
 			<thead>
 				<th>SSN</th>
 				<th>Multiplier</th>
 				<th>Bonus</th>
 			</thead>
 			<tbody>
-				
-			
+				<c:forEach items="${listResult}" var="result">
+					<tr>
+						<td><c:out value="${result.ssn }"></c:out></td>
+						<td><c:out value="${result.multiplier }"></c:out></td>
+						<td><c:out value="${result.bonus }"></c:out></td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 		<p>${data.ssn}</p>
