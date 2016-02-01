@@ -17,7 +17,7 @@ import beans.Data;
 /**
  * Servlet implementation class test_servlet
  */
-@WebServlet("/calculateBonus")
+@WebServlet("/test_servlet")
 public class test_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Data> listResult;
@@ -39,44 +39,29 @@ public class test_servlet extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("HELLO WORLD");
 		response.setContentType("text/html;charset=UTF-8");
-		int i = 0;
 		Data data = null; 
 		String[]SSNValue;
 		String[]MultiplierValue;
 		Enumeration<String> NomsParam = request.getParameterNames();
-		while(NomsParam.hasMoreElements()) {
+		//while(NomsParam.hasMoreElements()) {
 			String nameParam = (String) NomsParam.nextElement();
 			SSNValue = request.getParameterValues(nameParam);
 			nameParam = (String)NomsParam.nextElement();
 			MultiplierValue = request.getParameterValues(nameParam);
 			
-		}
+		//}
 		
-		for(String s : SSNValue){
+		for(int i = 0; i<SSNValue.length; i++){
 			data = new Data();
-			data.setSsn(Integer.parseInt(s));
-			listResult.add(data);
-		}
-		for(Data d : Mult)
-		if("SSN".equals(nameParam)){
-			
-		}else if("multiplier".equals(nameParam)){
-			data.setMultiplier(value);
+			data.setSsn(SSNValue[i]);
+			data.setMultiplier(MultiplierValue[i]);
 			data.setBonus(calculateBonus(data.getMultiplier()));
 			listResult.add(data);
 		}
 		
-		/*Data data = new Data();
-
-		data.setSsn(request.getParameter("SSN"));
-		data.setMultiplier(request.getParameter("multiplier"));
-		data.setBonus(calculateBonus(data.getMultiplier()));
-
-		listResult.add(data);
-		
-		request.setAttribute("data", data);*/
+		System.out.println(listResult.toString());
 
 		request.setAttribute("listResult", listResult);
 		request.getRequestDispatcher("result.jsp")

@@ -27,9 +27,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<p>${data.ssn}</p>
-		<p>${data.multiplier}</p>
-		<p><c:out value="${data.bonus}" default="Le multiplier n'est pas renseigné !" /></p>
 	</div>
 </body>
 </html>

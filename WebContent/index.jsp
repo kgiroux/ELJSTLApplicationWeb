@@ -18,10 +18,10 @@
 			<label for="multiplier">Multiplier bonus :  </label>
 			<input type="text" name="multiplier" required>
 			</br>
-			<input type="submit" class="btn btn-lg-6 btn-primary"/>
-			<input type="reset" class="btn btn-lg-6 btn-danger"/>
+			
 		</c:forEach>
-		
+		<input type="submit" class="btn btn-lg-6 btn-primary"/>
+			<input type="reset" class="btn btn-lg-6 btn-danger"/>
 	</form>
 </body>
 </html>
