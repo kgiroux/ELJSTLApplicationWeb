@@ -11,12 +11,13 @@
 	<legend>Bonus calculation</legend>
 	<form method="POST" action="<%=request.getContextPath()%>/test_servlet">
 		<label for="SSN">Security Social Number : </label>
-		<input type="text" name="SSN" id="SSN">
+		<input type="text" name="SSN" id="SSN" required>
 		</br>
 		<label for="multiplier">Multiplier bonus :  </label>
-		<input type="text" name="multiplier" id="multiplier">
+		<input type="text" name="multiplier" id="multiplier" required>
 		</br>
-		<input type=submit class="btn btn-lg-6 btn-primary">
+		<input type="submit" class="btn btn-lg-6 btn-primary"/>
+		<input type="reset" class="btn btn-lg-6 btn-danger"/>
 	</form>
 </body>
 </html>
