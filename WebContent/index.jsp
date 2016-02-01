@@ -5,11 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Kévin Giroux & Cyril Lefebvre</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
 	<legend>Bonus calculation</legend>
-	<form>
+	<form method="post" action="<%=request.getContextPath()%>/test_servlet">
 		<label for="SSN">Security Social Number : </label>
 		<input type="text" name="SSN" id="SSN">
 		</br>
