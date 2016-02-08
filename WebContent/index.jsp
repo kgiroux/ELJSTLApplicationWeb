@@ -16,7 +16,7 @@
 			<input type="text" name="SSN" required>
 			</br>
 			<label for="multiplier">Multiplier bonus :  </label>
-			<input type="text" name="multiplier" required>
+			<input type="text" name="multiplier">
 			</br>
 			
 		</c:forEach>

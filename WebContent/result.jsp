@@ -20,9 +20,9 @@
 			<tbody>
 				<c:forEach items="${listResult}" var="result">
 					<tr>
-						<td><c:out value="${result.ssn }"></c:out></td>
-						<td><c:out value="${result.multiplier }"></c:out></td>
-						<td><c:out value="${result.bonus }"></c:out></td>
+						<td>${result.ssn }</td>
+						<td>${result.multiplier }</td>
+						<td>${!empty result.bonus ? result.bonus : "Bonus Vide"}</td>
 					</tr>
 				</c:forEach>
 			</tbody>
