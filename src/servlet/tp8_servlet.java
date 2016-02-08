@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -22,7 +23,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/CalculateBonus3")
 public class tp8_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	@EJB
+	session.CalculatriceDistantRemote Ejb;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -32,10 +34,8 @@ public class tp8_servlet extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("HELLO WORLD");
 		response.setContentType("text/html;charset=UTF-8");
 		InitialContext ctx = null;
-		PrintWriter out = response.getWriter();
 
 		String[] SSNValue = null;
 		String[] MultiplierValue = null;
@@ -63,17 +63,9 @@ public class tp8_servlet extends HttpServlet {
 			parameters.add(couple);
 		}
 
-		try {
-			ctx = new InitialContext();
-			session.CalculatriceDistantRemote ref = (session.CalculatriceDistantRemote) ctx
-					.lookup("java:global/CalculatriceDistant/CalculatriceDistant!session.CalculatriceDistantRemote");
-			request.setAttribute("listResult", ref.calculateBonus(parameters).getListCouple());
-		} catch (NamingException ex) {
-			System.out.println(ex.getMessage());
-		} finally {
-			out.close();
-		}
+		request.setAttribute("listResult", Ejb.calculateBonus(parameters).getListCouple());
 		request.getRequestDispatcher("result.jsp").forward(request, response);
+
 	}
 
 	/**
