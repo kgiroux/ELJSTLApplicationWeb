@@ -17,18 +17,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.DataTP7;
+
 /**
  * Servlet implementation class tp8_servlet
  */
-@WebServlet("/CalculateBonus3")
-public class tp8_servlet extends HttpServlet {
+@WebServlet("/CalculateBonus4")
+public class tp9_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	@EJB
-	session.CalculatriceDistant Ejb;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public tp8_servlet() {
+	public tp9_servlet() {
 		super();
 	}
 
@@ -63,9 +63,19 @@ public class tp8_servlet extends HttpServlet {
 			parameters.add(couple);
 		}
 
-		request.setAttribute("listResult", Ejb.calculateBonus(parameters).getListCouple());
-		request.getRequestDispatcher("result.jsp").forward(request, response);
+        try {
+        	ctx = new InitialContext();
+        	session.CalculatriceRemote ref = (session.CalculatriceRemote)ctx.lookup("java:global/CalculatriceRemote/Calculatrice!session.CalculatriceRemote");
+        	
+        	DataTP7 tp7Data = new DataTP7(ref.calculateBonus(parameters));
+        	request.setAttribute("listResult",tp7Data.getListCouple() );
+        } 
+        catch (NamingException ex) {
+            System.out.println(ex.getMessage());
+        } finally {            
+        	request.getRequestDispatcher("result.jsp").forward(request, response);
 
+        }
 	}
 
 	/**
