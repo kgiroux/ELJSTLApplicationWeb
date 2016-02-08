@@ -17,7 +17,7 @@ import beans.Data;
 /**
  * Servlet implementation class test_servlet
  */
-@WebServlet("/test_servlet")
+@WebServlet("/CalculateBonus")
 public class test_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Data> listResult;
@@ -42,17 +42,21 @@ public class test_servlet extends HttpServlet {
 		System.out.println("HELLO WORLD");
 		response.setContentType("text/html;charset=UTF-8");
 		Data data = null; 
-		String[]SSNValue;
-		String[]MultiplierValue;
+		String[]SSNValue = null;
+		System.out.println("Hello world");
+		String[]MultiplierValue = null;
 		Enumeration<String> NomsParam = request.getParameterNames();
-		//while(NomsParam.hasMoreElements()) {
+		while(NomsParam.hasMoreElements()) {
 			String nameParam = (String) NomsParam.nextElement();
-			SSNValue = request.getParameterValues(nameParam);
-			nameParam = (String)NomsParam.nextElement();
-			MultiplierValue = request.getParameterValues(nameParam);
-			
-		//}
-		
+			if("multiplier".equals(nameParam)){
+				MultiplierValue = request.getParameterValues(nameParam);
+			}else if("SSN".equals(nameParam)){
+				System.out.println(nameParam);
+				SSNValue = request.getParameterValues(nameParam);
+			}else{
+				System.out.print("No used parameter");
+			}
+		}
 		for(int i = 0; i<SSNValue.length; i++){
 			data = new Data();
 			data.setSsn(SSNValue[i]);
@@ -60,12 +64,8 @@ public class test_servlet extends HttpServlet {
 			data.setBonus(calculateBonus(data.getMultiplier()));
 			listResult.add(data);
 		}
-		
-		System.out.println(listResult.toString());
-
 		request.setAttribute("listResult", listResult);
-		request.getRequestDispatcher("result.jsp")
-				.forward(request, response);
+		request.getRequestDispatcher("result.jsp").forward(request, response);
 	}
 
 	/**

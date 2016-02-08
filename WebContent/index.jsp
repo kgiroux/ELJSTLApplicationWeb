@@ -10,15 +10,18 @@
 </head>
 <body>
 	<legend>Bonus calculation</legend>
-	<form method="POST" action="<%=request.getContextPath()%>/test_servlet">
+	<form method="POST" action="<%=request.getContextPath()%>/CalculateBonus">
 		<c:forEach var="i" begin="1" end="5">
-			<label for="SSN">Security Social Number : </label>
-			<input type="text" name="SSN" required>
-			</br>
-			<label for="multiplier">Multiplier bonus :  </label>
-			<input type="text" name="multiplier">
-			</br>
-			
+			<div class="row">
+				<div class="col-lg-6">
+					<label for="SSN">Security Social Number : </label>
+					<input type="text" name="SSN" required>
+				</div>
+				<div class="col-lg-6">
+					<label for="multiplier">Multiplier bonus :  </label>
+					<input type="text" name="multiplier">
+				</div>
+			</div>
 		</c:forEach>
 		<input type="submit" class="btn btn-lg-6 btn-primary"/>
 			<input type="reset" class="btn btn-lg-6 btn-danger"/>
