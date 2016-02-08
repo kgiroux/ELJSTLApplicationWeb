@@ -14,15 +14,13 @@
 		<table class="table table-striped">
 			<thead>
 				<th>SSN</th>
-				<th>Multiplier</th>
 				<th>Bonus</th>
 			</thead>
 			<tbody>
 				<c:forEach items="${listResult}" var="result">
 					<tr>
-						<td>${result.ssn }</td>
-						<td>${result.multiplier }</td>
-						<td>${!empty result.bonus ? result.bonus : "Bonus Vide"}</td>
+						<td><c:out value="${result['SSN']}"/></td>
+						<td><c:out value="${result['Bonus']}"/></td>
 					</tr>
 				</c:forEach>
 			</tbody>
