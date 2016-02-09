@@ -28,6 +28,9 @@ import beans.DataTP7;
 @WebServlet("/CalculateBonus6")
 public class tp11_servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	@EJB
+	session.CalculatriceLocalForEntiteLocal Ejb;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -63,16 +66,17 @@ public class tp11_servlet extends HttpServlet {
 				System.out.print("No used parameter");
 			}
 		}
-		for(int i = 0; i<SSNValue.length; i++){
-			data = new Data();
-			data.setSsn(SSNValue[i]);
-			data.setMultiplier(MultiplierValue[i]);
-			data.setBonus(calculateBonus(data.getMultiplier()));
-			BonusDao daoBonus = new BonusDao();
-			daoBonus.create(data);
-			listResult.add(data);
+		List<Map<String, String>> parameters = new ArrayList<Map<String, String>>();
+		Map<String, String> couple = null;
+
+		for (int i = 0; i < SSNValue.length; i++) {
+			couple = new HashMap<String, String>();
+			couple.put("SSN", SSNValue[i]);
+			couple.put("Multiplier", MultiplierValue[i]);
+			parameters.add(couple);
 		}
-		request.setAttribute("listResult", listResult);
+		
+		request.setAttribute("listResult", Ejb.calculateBonusAndCreate(parameters));
 		request.getRequestDispatcher("result.jsp").forward(request, response);
 	}
 
