@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.BonusDAO;
 import beans.Data;
 import beans.DataTP7;
 
@@ -68,7 +69,7 @@ public class tp10_servlet extends HttpServlet {
 			data.setSsn(SSNValue[i]);
 			data.setMultiplier(MultiplierValue[i]);
 			data.setBonus(calculateBonus(data.getMultiplier()));
-			BonusDao daoBonus = new BonusDao();
+			BonusDAO daoBonus = BonusDAO.getInstance();
 			daoBonus.create(data);
 			listResult.add(data);
 		}

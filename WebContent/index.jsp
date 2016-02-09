@@ -10,7 +10,7 @@
 </head>
 <body>
 	<legend>Bonus calculation</legend>
-	<form method="POST" action="<%=request.getContextPath()%>/CalculateBonus4">
+	<form method="POST" action="<%=request.getContextPath()%>/CalculateBonus5">
 		<c:forEach var="i" begin="1" end="5">
 			<div class="row">
 				<div class="col-lg-6">

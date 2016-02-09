@@ -30,7 +30,7 @@ public class DBManager {
 	public static Connection getConnect() throws SQLException {
 		if (!(connect instanceof Connection)) {
 			initConnexion("com.mysql.jdbc.Driver",
-					"jdbc:mysql://localhost:3306/test", "root", "mdp");
+					"jdbc:mysql://localhost:3306/test", "root", "");
 		}
 		return connect;
 	}
