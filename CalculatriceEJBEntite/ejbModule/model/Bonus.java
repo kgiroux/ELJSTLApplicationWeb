@@ -1,6 +1,7 @@
-package entite;
+package model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -21,10 +22,12 @@ public class Bonus implements Serializable {
 	public Bonus() {
 	}
 
-	public Bonus(String ssn, String bonus){
-		this.bonus = bonus;
+	public Bonus(String ssn, String bonus) {
+		super();
 		this.ssn = ssn;
+		this.bonus = bonus;
 	}
+
 	public String getSsn() {
 		return this.ssn;
 	}
